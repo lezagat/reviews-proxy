@@ -1,0 +1,55 @@
+import { check } from "k6";
+import http from "k6/http";
+
+
+export  let options = {
+  vus:225,        //virtual users
+  rps:225,       //request per second
+  duration:"3m"    //duration of the test
+}
+
+export default function() {
+  var id = Math.ceil(Math.random() * 10000000);
+    let res = http.get(`http://localhost:4000/api/restaurants/${id}/reviews`); //send get request to proxy server 
+    check(res, {
+        "is status 200": (r) => r.status === 200,
+        "transaction time ok": (r) => r.timings.duration < 2000,
+    });
+};
+
+Ivans-MacBook-Pro:proxy-martin ivanlee$ k6 run script.js
+
+          /\      |‾‾|  /‾‾/  /‾/   
+     /\  /  \     |  |_/  /  / /    
+    /  \/    \    |      |  /  ‾‾\  
+   /          \   |  |‾\  \ | (_) | 
+  / __________ \  |__|  \__\ \___/ .io
+
+  execution: local
+     output: -
+     script: script.js
+
+    duration: 3m0s, iterations: -
+         vus: 225,  max: 225
+
+    done [==========================================================] 3m0s / 3m0s
+
+    ✗ transaction time ok
+     ↳  89% — ✓ 33479 / ✗ 4058
+    ✓ is status 200
+
+    checks.....................: 94.59% ✓ 70984 ✗ 4058 
+    data_received..............: 9.0 MB 50 kB/s
+    data_sent..................: 4.2 MB 23 kB/s
+    http_req_blocked...........: avg=56.71ms  min=7µs    med=314µs    max=5m18s   p(90)=2.97ms p(95)=7.1ms 
+    http_req_connecting........: avg=56.45ms  min=0s     med=221µs    max=5m18s   p(90)=2.42ms p(95)=5.17ms
+    http_req_duration..........: avg=2.41s    min=2.25ms med=4.1ms    max=5m26s   p(90)=2.28s  p(95)=4.18s 
+    http_req_receiving.........: avg=33.39µs  min=9µs    med=29µs     max=4.4ms   p(90)=46µs   p(95)=57µs  
+    http_req_sending...........: avg=311.83µs min=26µs   med=73µs     max=43.41ms p(90)=483µs  p(95)=1.54ms
+    http_req_tls_handshaking...: avg=0s       min=0s     med=0s       max=0s      p(90)=0s     p(95)=0s    
+    http_req_waiting...........: avg=2.41s    min=2.16ms med=3.98ms   max=5m26s   p(90)=2.28s  p(95)=4.18s 
+    http_reqs..................: 37521  208.449639/s
+    iteration_duration.........: avg=1.05s    min=2.76ms med=365.07ms max=30.51s  p(90)=2.57s  p(95)=4.53s 
+    iterations.................: 37521  208.449639/s
+    vus........................: 225    min=225 max=225
+    vus_max....................: 225    min=225 max=225

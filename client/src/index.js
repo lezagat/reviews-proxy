@@ -1,0 +1,13 @@
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// // import ZagatReviews from ...
+// // import PhotoServices from ...
+// // import GoogleReviews from ...
+// // import RestaurantInfo from ...
+
+// ReactDOM.render(<App />, document.getElementById('app'));
+
+// {/* // ReactDOM.render(<ZagatReviews>, document.getElementById('zagat-reviews'));
+// // ReactDOM.render(<PhotoServices>, document.getElementById('photos'));
+// // ReactDOM.render(<GoogleReviews>, document.getElementById('google-reviews'));
+// // ReactDOM.render(<RestaurantInfo>, document.getElementById('info')); */}
