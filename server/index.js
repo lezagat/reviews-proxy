@@ -24,7 +24,7 @@ app.get('/restaurants/:id', (req, res) => {
 app.get('/api/restaurants/:id/reviews', (req, res) => { //proxy server url
   var id = req.params.id
   // console.log(id)
-  request(`http://localhost:3001/api/restaurants/${id}/reviews`, (err,results) => {
+  request(`http://54.153.13.94:3001/api/restaurants/${id}/reviews`, (err,results) => {
     if(err){
       res.send(err)
     }

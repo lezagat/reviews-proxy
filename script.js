@@ -10,7 +10,7 @@ export  let options = {
 
 export default function() {
   var id = Math.ceil(Math.random() * 10000000);
-    let res = http.get(`http://localhost:4000/api/restaurants/${id}/reviews`); //send get request to proxy server 
+    let res = http.get(`http://54.153.13.94:4000/api/restaurants/${id}/reviews`); //send get request to proxy server 
     check(res, {
         "is status 200": (r) => r.status === 200,
         "transaction time ok": (r) => r.timings.duration < 2000,
