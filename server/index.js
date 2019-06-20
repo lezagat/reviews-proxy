@@ -13,6 +13,8 @@ app.get('/restaurants/:id', (req, res) => {
   res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
 })
 
+
+
 // // Eugenia's module: (3000)
 // app.get('/restaurants/:id/photos', (req, res) => {
 //   // extract the id with request.params.id
